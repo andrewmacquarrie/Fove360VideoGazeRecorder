@@ -30,7 +30,7 @@ public class DataRecorder : MonoBehaviour {
     void Start ()
     {
         Scene scene = SceneManager.GetActiveScene();
-        orientationDataFilePath = "./DataRecordings/" + participantId + "_" + scene.name + "_orientation_data_" + DateTime.Now.ToString("MM-dd-yy_hh-mm-ss") + ".csv";
+        orientationDataFilePath = "./DataRecordings/" + participantId + "_" + scene.name + DateTime.Now.ToString("MM-dd-yy_hh-mm-ss") + ".csv";
         
         orientationStringWriter = new StreamWriter(orientationDataFilePath);
         string[] headers = new string[] { "video_time", "x_rot", "y_rot", "z_rot", "quat_x", "quat_y", "quat_z", "quat_w",
