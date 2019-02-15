@@ -13,7 +13,7 @@ public class FOVE3DCursorLeft : MonoBehaviour {
     void Update()
     {
         FoveInterface.EyeRays rays = FoveInterface.GetEyeRays();
-        Ray r = rays.right;
+        Ray r = rays.left;
 
         RaycastHit hit;
         MeshCollider coll = videoSphere.GetComponent<MeshCollider>();
