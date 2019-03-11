@@ -12,14 +12,16 @@ public class AttentionEventArrow : MonoBehaviour {
 	public GameObject videoSphere;	
 	public GameObject eyeLocation;
 
+	public GameObject arrow;
+
 	// Use this for initialization
 	void Start () {
 		hidden = true;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		var r = GetComponent<MeshRenderer> ();
+		var r = arrow.GetComponent<MeshRenderer> ();
 		r.enabled = !hidden;
 
 		var forward = new Vector3(0,0,1f);
@@ -30,11 +32,19 @@ public class AttentionEventArrow : MonoBehaviour {
 		var horAngleBetweenArrowAndEyes = Vector2.SignedAngle (new Vector2 (transform.position.x,transform.position.z), new Vector2 (vectorToEyePosition.x,vectorToEyePosition.z));
 		transform.RotateAround (new Vector3(0f,0f,0f), up, horAngleBetweenArrowAndEyes * -1f);
 
-
-
-		/*
 		var rotH = Quaternion.AngleAxis(hAngle,Vector3.up);
 		var vectorToAttentionPoint = rotH * Vector3.forward;
+		var horAngleBeteenEyesAndTargetPoint = Vector2.SignedAngle (new Vector2 (vectorToAttentionPoint.x,vectorToAttentionPoint.z), new Vector2 (vectorToEyePosition.x,vectorToEyePosition.z));
+
+		if (horAngleBeteenEyesAndTargetPoint > 0) {
+			arrow.transform.localRotation = Quaternion.Euler(new Vector3 (90, 0, -90));
+		} else {
+			arrow.transform.localRotation = Quaternion.Euler(new Vector3 (-90, 0, -90));
+		}
+
+		Debug.DrawRay (new Vector3(0f,0f,0f),vectorToAttentionPoint);
+
+		/*
 
 		Debug.DrawRay (new Vector3(0f,0f,0f),vectorToAttentionPoint);
 

@@ -13,7 +13,7 @@ public class AttentionEventsController : MonoBehaviour {
 	[System.Serializable]
 	public class AttentionEvent
 	{
-		public int startTime;
+		public float startTime;
 		public float hAngle;
 		public float vAngle;
 		public string type;
