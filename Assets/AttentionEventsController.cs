@@ -62,9 +62,6 @@ public class AttentionEventsController : MonoBehaviour {
 
 			if (currentEvent.type == "ARROW") {
 				arrow.PointTowards (currentEvent.hAngle, currentEvent.vAngle);
-
-				//TODO: remove - only for debug
-				flickerController.PointTowards (currentEvent.hAngle);
 			} else if (currentEvent.type == "FLICKER") {
 				flickerController.PointTowards (currentEvent.hAngle);
 			} else if (currentEvent.type == "CLEAR") {
