@@ -9,7 +9,6 @@ public class AttentionEventArrow : MonoBehaviour {
 	private float hAngle;
 	private float vAngle;
 
-	public GameObject videoSphere;	
 	public GameObject eyeLocation;
 
 	public GameObject arrow;
