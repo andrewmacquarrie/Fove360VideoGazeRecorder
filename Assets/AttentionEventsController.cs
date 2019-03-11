@@ -5,24 +5,18 @@ using System.IO;
 
 public class AttentionEventsController : MonoBehaviour {
 
+	public AttentionEventArrow arrow;
 	public string PathToEventsFile;
 	private List<AttentionEvent> events;
 	int currentEventIndex;
 
 	[System.Serializable]
-	public enum EventType 
-	{
-		ARROW,
-		CLEAR
-	}
-
-	[System.Serializable]
 	public class AttentionEvent
 	{
 		public int startTime;
-		public int xPos;
-		public int yPos;
-		public EventType type;
+		public float hAngle;
+		public float vAngle;
+		public string type;
 	}
 
 	[System.Serializable]
@@ -62,7 +56,13 @@ public class AttentionEventsController : MonoBehaviour {
 
 		if (Time.time > currentEvent.startTime) {
 			// do event thing
-			Debug.Log("doing event" + currentEvent.type);
+			Debug.Log("doing event: " + currentEvent.type);
+
+			if (currentEvent.type == "ARROW") {
+				arrow.PointTowards (currentEvent.hAngle, currentEvent.vAngle);
+			} else if (currentEvent.type == "CLEAR") {
+				arrow.Clear ();
+			}
 
 			currentEventIndex++;
 		}
